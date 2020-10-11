@@ -1,0 +1,29 @@
+root: true
+
+parserOptions:
+  sourceType: module
+
+extends:
+  - problems
+  - plugin:import/errors
+  - plugin:import/warnings
+  - plugin:prettier/recommended
+
+env:
+  amd: true
+  browser: true
+
+settings:
+  import/resolver:
+    node:
+      extensions:
+        - .js
+        - .jsx
+rules:
+  no-fallthrough: off
+  no-undef-init: off
+  no-console: off
+  prefer-rest-params: off
+  eqeqeq: [2, "smart"]
+  import/order: [2, {newlines-between: "always-and-inside-groups", alphabetize: {order: "asc"}, groups: ["builtin", "external", "internal", "parent", "sibling", "index", "unknown"]}]
+
