@@ -20,3 +20,5 @@ Helpful resources from the internet that were used to develop this script
 
 - https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e
 - https://medium.com/better-programming/schedule-node-js-scripts-on-your-mac-with-launchd-a7fca82fbf02
+- https://github.com/mikaelbr/node-notifier
+- https://systeminformation.io/
