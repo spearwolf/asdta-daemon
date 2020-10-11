@@ -1,17 +1,22 @@
-asdta - the allow self-determined time allocation daemon
-========================================================
+**asdta** - the **a**llow **s**elf-**d**etermined **t**ime **a**llocation daemon
+================================================================================
 
-ein tool, mit dem man steuern kann, wie lange an einem tag bestimmte programme laufen dürfen.
-wird das zeitkontigent für ein bestimmten prozeß überschritten, wird dieser sofort terminiert.
-kurz vor ablauf der zeit wird eine system benachrichtigung eingeblendet.
+a tool to control how long certain programs may run on a day.
+if the time constant for a certain process is exceeded, the process is terminated immediately.
+shortly before the time expires a system notification is displayed.
 
-das asdta script sollte in intervallen, zB jeweils alle 60 sekunden einmal ausgeführt werden.
-beim start wird die configuration eingelesen and für alle darin enthaltenen prozesse:
-- überprüft ob sie laufen
-- wenn ja, dann wird das zeitkontigent für diesen prozess erhöht (um wieviel ist konfigurierbar, wenn
-  das script alle 60 sekunden ausgeführt wird, wäre es sinnvoll, das kontigent ebenfalls um 60 sekunden zu erhöhen)
-- wenn ein bestimmtes zeitkontigent erreicht wurde, wird eine system benachrichtigung angezeigt
-- wenn das zeitkontigent für den tag überschritten ist, wird der prozess sofort gestoppt
+the _asdta_ script should be executed in intervals, e.g. once every 60 seconds.
+on startup the configuration is read in and for all contained processes:
+- checks if they are running
+- if yes, then the time constant for this process is increased (by how much is configurable if the script is executed every 60 seconds, it would make sense to increase the constant by 60 seconds as well)
+- when a certain time constant is reached, a system notification is displayed
+- if the time constant for the day is exceeded, the process is stopped immediately
 
-danach beendet sich das script, vorher wird aber noch der aktuelle status (zeitkontigente)
-in eine json datei gespeichert. diese json datei wird beim nächsten programmstart wieder eingelesen.
+after that the script terminates, but before that the current status (time-contingent) is written into a json file. this json file will be read in again at the next program start.
+
+
+Helpful resources from the internet that were used to develop this script
+-------------------------------------------------------------------------
+
+- https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e
+- https://medium.com/better-programming/schedule-node-js-scripts-on-your-mac-with-launchd-a7fca82fbf02
