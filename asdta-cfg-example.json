@@ -1,0 +1,10 @@
+{
+  "increaseTimeContingent": "60 seconds",
+  "check_process": [{
+    "name": "firefox",
+    "maxTimeContingentSeconds": "1.5 hours",
+    "process_names": [
+      "firefox"
+    ]
+  }]
+}
