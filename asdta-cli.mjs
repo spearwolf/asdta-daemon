@@ -8,6 +8,7 @@ import path from 'path';
 
 import load_day_states from './lib/load_day_states.mjs';
 import query_processes from './lib/query_processes.mjs';
+import save_day_states from './lib/save_day_states.mjs';
 
 const home = os.homedir();
 const workspacePath = path.join(home, '.asdta');
@@ -22,4 +23,5 @@ const cfg = JSON.parse(fs.readFileSync(configPath));
 
 query_processes(cfg)
   .then((processes) => load_day_states(processes, workspacePath))
+  .then(save_day_states)
   .then(console.log);
