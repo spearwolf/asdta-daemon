@@ -1,10 +1,13 @@
 {
-  "increaseTimeContingent": "60 seconds",
-  "check_process": [{
-    "name": "firefox",
-    "maxTimeContingentSeconds": "1.5 hours",
-    "process_names": [
-      "firefox"
-    ]
-  }]
+  "increaseTimeAmount": "60 seconds",
+  "processes": [
+    {
+      "name": "firefox",
+      "timeContingent": "1.5 hours",
+      "query": {
+        "user": "=ws",
+        "name": "=firefox"
+      }
+    }
+  ]
 }
