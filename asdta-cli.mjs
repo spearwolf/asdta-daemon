@@ -27,6 +27,5 @@ const cfg = JSON.parse(fs.readFileSync(configPath));
 query_processes(cfg)
   .then((processes) => load_day_states(processes, dayPath))
   .then((processes) => check_day_states(processes, cfg, workspacePath))
-  .then((processes) => save_day_states(processes, dayPath));
-
-// .then((processes) => console.log(JSON.stringify(processes, null, 2)));
+  .then((processes) => save_day_states(processes, dayPath))
+  .then((processes) => console.log(JSON.stringify(processes, null, 2)));

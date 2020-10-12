@@ -6,7 +6,7 @@
       "timeContingent": "2.5 hours",
       "query": {
         "user": "=ws",
-        "name": "=firefox"
+        "name": "firefox"
       },
       "notifications": [
         {
