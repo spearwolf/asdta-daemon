@@ -21,6 +21,7 @@ You need to create your configuration manually &mdash; You can use the `asdta-cf
 ```sh
 $ mkdir -p $HOME/.asdta/
 $ cp asdta-cfg-example.json $HOME/.asdta/asdta-cfg.json
+$ cp rokko-joker-asdta-icon.png $HOME/.asdta/
 ```
 
 Helpful resources from the internet that were used to develop this script
