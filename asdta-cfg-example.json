@@ -3,11 +3,25 @@
   "processes": [
     {
       "name": "firefox",
-      "timeContingent": "1.5 hours",
+      "timeContingent": "2.5 hours",
       "query": {
         "user": "=ws",
         "name": "=firefox"
-      }
+      },
+      "notifications": [
+        {
+          "remainingTime": "2 hours",
+          "title": "Spielzeit",
+          "message": "Du hast noch 2 Stunden Spielzeit heute!",
+          "icon": "rokko-joker-asdta-icon.png"
+        },
+        {
+          "remainingTime": "5 minutes",
+          "title": "Spielzeit",
+          "message": "Nur noch 5 Minuten Spielzeit!",
+          "icon": "rokko-joker-asdta-icon.png"
+        }
+      ]
     }
   ]
 }
