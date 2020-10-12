@@ -21,7 +21,12 @@
           "message": "Nur noch 5 Minuten Spielzeit!",
           "icon": "rokko-joker-asdta-icon.png"
         }
-      ]
+      ],
+      "byeByeNotification": {
+        "title": "Spielzeit",
+        "message": "Du hast heute leider keine Spielzeit mehr!",
+        "icon": "rokko-joker-asdta-icon.png"
+      }
     }
   ]
 }
