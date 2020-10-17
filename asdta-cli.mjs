@@ -1,10 +1,10 @@
-#!/usr/bin/env node
-
 /* eslint-env node */
 import fs from 'fs';
 import os from 'os';
 
 import path from 'path';
+
+import si from 'systeminformation';
 
 import check_day_states from './lib/check_day_states.mjs';
 import get_day_path from './lib/get_day_path.mjs';
@@ -18,8 +18,13 @@ const dayPath = get_day_path(workspacePath);
 
 const [, , ...args] = process.argv;
 
+if (args[0] === 'ps') {
+  si.processes().then((processes) => console.log(JSON.stringify(processes, null, 2)));
+  process.exit(0);
+}
+
 let VERBOSE = false;
-if (args.length >= 1 && args[0] === '-v') {
+if (args[0] === '-v') {
   args.shift();
   VERBOSE = true;
 }
