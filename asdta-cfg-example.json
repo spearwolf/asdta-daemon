@@ -4,10 +4,13 @@
     {
       "name": "minecraft",
       "timeContingent": "2.5 hours",
-      "query": {
+      "query": [{
         "user": "=rokko",
-        "command": "minecraft"
-      },
+        "path": "Minecraft.app"
+      }, {
+        "user": "=rokko",
+        "params": "Library/Application Support/minecraft"
+      }],
       "notifications": [
         {
           "remainingTime": "1 hour",
