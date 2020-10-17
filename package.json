@@ -13,8 +13,8 @@
     "lint": "run-s eslint prettier:check",
     "fix": "run-s eslint:fix prettier:write"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Wolfger Schramm <wolfger@spearwolf.de>",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/plugin-transform-runtime": "^7.11.5",
