@@ -19,7 +19,9 @@ const dayPath = get_day_path(workspacePath);
 const [, , ...args] = process.argv;
 
 const configPath =
-  args.length === 1 ? args[0] : path.join(workspacePath, 'asdta-cfg.json');
+  args.length >= 1 ? args[args.length - 1] : path.join(workspacePath, 'asdta-cfg.json');
+
+const VERBOSE = args.length >= 1 && args[0] === '-v';
 
 // load main configuration
 const cfg = JSON.parse(fs.readFileSync(configPath));
@@ -28,4 +30,8 @@ query_processes(cfg)
   .then((processes) => load_day_states(processes, dayPath))
   .then((processes) => check_day_states(processes, cfg, workspacePath))
   .then((processes) => save_day_states(processes, dayPath))
-  .then((processes) => console.log(JSON.stringify(processes, null, 2)));
+  .then((processes) => {
+    if (VERBOSE) {
+      console.log(JSON.stringify(processes, null, 2));
+    }
+  });

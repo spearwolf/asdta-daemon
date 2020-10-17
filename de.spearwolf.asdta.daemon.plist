@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+
+        <key>Label</key>
+        <string>de.spearwolf.asdta.daemon.plist</string>
+
+        <key>RunAtLoad</key>
+        <true/>
+
+        <key>StartInterval</key>
+        <integer>60</integer>
+
+        <key>StandardErrorPath</key>
+        <string>/Users/rokko/.asdta/stderr.log</string>
+
+        <key>StandardOutPath</key>
+        <string>/Users/rokko/.asdta/stdout.log</string>
+
+        <key>EnvironmentVariables</key>
+        <dict>
+            <key>PATH</key>
+            <string><![CDATA[/Users/rokko/.nvm/versions/node/v14.14.0/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin]]></string>
+        </dict>
+
+        <key>WorkingDirectory</key>
+        <string>/Users/rokko/.asdta/asdta-daemon</string>
+
+        <key>ProgramArguments</key>
+        <array>
+            <string>/Users/rokko/.nvm/versions/node/v14.14.0/bin/node</string>
+            <string>./asdta-cli.mjs</string>
+        </array>
+
+    </dict>
+</plist>

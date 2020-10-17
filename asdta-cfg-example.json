@@ -2,29 +2,35 @@
   "increaseTimeAmount": "60 seconds",
   "processes": [
     {
-      "name": "firefox",
+      "name": "minecraft",
       "timeContingent": "2.5 hours",
       "query": {
-        "user": "=ws",
-        "name": "firefox"
+        "user": "=rokko",
+        "command": "minecraft"
       },
       "notifications": [
         {
-          "remainingTime": "2 hours",
+          "remainingTime": "1 hour",
           "title": "Spielzeit",
-          "message": "Du hast noch 2 Stunden Spielzeit heute!",
+          "message": "Du hast noch 1 Stunde Minecraft übrig!",
+          "icon": "rokko-joker-asdta-icon.png"
+        },
+        {
+          "remainingTime": "15 minutes",
+          "title": "Spielzeit",
+          "message": "Dir bleiben noch 15 Minuten Minecraft für heute!",
           "icon": "rokko-joker-asdta-icon.png"
         },
         {
           "remainingTime": "5 minutes",
           "title": "Spielzeit",
-          "message": "Nur noch 5 Minuten Spielzeit!",
+          "message": "Achtung! in 5 Minuten wird Minecraft gestoppt!",
           "icon": "rokko-joker-asdta-icon.png"
         }
       ],
       "byeByeNotification": {
         "title": "Spielzeit",
-        "message": "Du hast heute leider keine Spielzeit mehr!",
+        "message": "Sorry, Du hast dein heutiges Minecraft Zeitkontingent ausgeschöpft!",
         "icon": "rokko-joker-asdta-icon.png"
       }
     }
