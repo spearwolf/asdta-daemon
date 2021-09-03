@@ -17,13 +17,23 @@ const dayPath = get_day_path(workspacePath);
 
 const [, , ...args] = process.argv;
 
+const cutOutParam = (args, ...options) => {
+  const idx = args.findIndex((arg) => options.includes(arg));
+  if (idx >= 0) {
+    args.splice(idx, 1);
+    return true;
+  }
+  return false;
+};
+
 if (args[0] === 'ps') {
-  show_processes();
+  show_processes(args.slice(1));
 } else {
-  let VERBOSE = false;
-  if (args[0] === '-v') {
-    args.shift();
-    VERBOSE = true;
+  const VERBOSE = cutOutParam(args, '-v', '--verbose');
+  const DRY_RUN = cutOutParam(args, '-n', '--dry-run');
+
+  if (DRY_RUN) {
+    console.log(`// Dry run activated (verbose=${VERBOSE})`);
   }
 
   const configPath =
@@ -34,8 +44,8 @@ if (args[0] === 'ps') {
 
   query_processes(cfg, VERBOSE)
     .then((processes) => load_day_states(processes, dayPath))
-    .then((processes) => check_day_states(processes, cfg, workspacePath))
-    .then((processes) => save_day_states(processes, dayPath))
+    .then((processes) => check_day_states(processes, cfg, workspacePath, DRY_RUN))
+    .then((processes) => (DRY_RUN ? processes : save_day_states(processes, dayPath)))
     .then((processes) => {
       if (VERBOSE) {
         console.log(JSON.stringify(processes, null, 2));
