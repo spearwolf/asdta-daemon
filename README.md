@@ -1,5 +1,7 @@
-**asdta** - the **a**llow **s**elf-**d**etermined **t**ime **a**llocation daemon :thinking:
+**asdta** - the **a**llow **s**elf-**d**etermined **t**ime **a**llocation daemon
 ================================================================================
+
+![parental-control](https://img.shields.io/badge/parental-control-red) ![screen-time](https://img.shields.io/badge/screen-time-blue) 🤔
 
 a tool to control how long specific programs may run on a day. If the time contingent for a particular process is exceeded, the process is terminated immediately. shortly before the time expires, a system notification is displayed.
 
