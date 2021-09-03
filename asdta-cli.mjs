@@ -4,6 +4,7 @@ import os from 'os';
 
 import path from 'path';
 
+import {cut_out_param, cut_out_param_with_value} from './lib/param_utils.mjs';
 import check_day_states from './lib/check_day_states.mjs';
 import get_day_path from './lib/get_day_path.mjs';
 import load_day_states from './lib/load_day_states.mjs';
@@ -18,33 +19,14 @@ const dayPath = get_day_path(workspacePath);
 
 const [, , ...args] = process.argv;
 
-const cutOutParam = (args, ...options) => {
-  const idx = args.findIndex((arg) => options.includes(arg));
-  if (idx >= 0) {
-    args.splice(idx, 1);
-    return true;
-  }
-  return false;
-};
-
-const cutOutParamWithValue = (args, ...options) => {
-  const idx = args.findIndex((arg) => options.includes(arg));
-  if (idx >= 0) {
-    const value = args[idx + 1];
-    args.splice(idx, 2);
-    return [true, value];
-  }
-  return [false];
-};
-
-const [hasCustomConfigPath, customConfigPath] = cutOutParamWithValue(
+const [hasCustomConfigPath, customConfigPath] = cut_out_param_with_value(
   args,
   '-c',
   '--config',
 );
 
 // lazy load main configuration
-const getConfig = (() => {
+const get_config = (() => {
   let _cfg;
   return () => {
     if (!_cfg) {
@@ -69,23 +51,23 @@ switch (args[0]) {
 
   case 'notify': {
     const [, processName, notificationType] = args;
-    show_notification(processName, notificationType, getConfig(), workspacePath);
+    show_notification(processName, notificationType, get_config(), workspacePath);
     break;
   }
 
   default: {
-    const VERBOSE = cutOutParam(args, '-v', '--verbose');
-    const DRY_RUN = cutOutParam(args, '-n', '--dry-run');
+    const VERBOSE = cut_out_param(args, '-v', '--verbose');
+    const DRY_RUN = cut_out_param(args, '-n', '--dry-run');
 
     if (DRY_RUN) {
       console.log(`// Dry run activated (verbose=${VERBOSE})`);
     }
 
-    query_processes(getConfig(), VERBOSE)
+    const config = get_config();
+
+    query_processes(config, VERBOSE)
       .then((processes) => load_day_states(processes, dayPath))
-      .then((processes) =>
-        check_day_states(processes, getConfig(), workspacePath, DRY_RUN),
-      )
+      .then((processes) => check_day_states(processes, config, workspacePath, DRY_RUN))
       .then((processes) => (DRY_RUN ? processes : save_day_states(processes, dayPath)))
       .then((processes) => {
         if (VERBOSE) {
